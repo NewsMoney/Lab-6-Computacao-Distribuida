@@ -1,4 +1,4 @@
-name: MPI Tests
+name: Atividade 3 - MPI Scatter/Gather
 
 on:
   push:
@@ -12,11 +12,11 @@ on:
       - master
 
 jobs:
-  mpi-test:
+  test-mpi:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: Checkout do repositório
         uses: actions/checkout@v4
 
       - name: Instalar MPI
@@ -24,20 +24,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y mpich
 
-      # ---------- TESTE ATIVIDADE 2 ----------
-      - name: Compilar Atividade 2
+      - name: Listar arquivos do repositório
         run: |
-          mpicc media_mpi.c -o media_mpi
+          find .
 
-      - name: Executar Atividade 2
-        run: |
-          mpirun -np 4 ./media_mpi 1000
-
-      # ---------- TESTE ATIVIDADE 3 ----------
-      - name: Compilar Atividade 3
+      - name: Compilar programa
         run: |
           mpicc atividade3.c -o atividade3
 
-      - name: Executar Atividade 3
+      - name: Executar programa
         run: |
           mpirun -np 5 ./atividade3
