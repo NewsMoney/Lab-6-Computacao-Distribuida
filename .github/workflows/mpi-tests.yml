@@ -17,10 +17,60 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y openmpi-bin libopenmpi-dev
 
+      - name: Listar arquivos
+        run: |
+          find .
+
       - name: Compilar
         run: |
           mpicc atividade3.c -o atividade3
 
-      - name: Executar
+      # TESTE 1
+      - name: Teste 1
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
+
+      # TESTE 2
+      - name: Teste 2
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
+
+      # TESTE 3
+      - name: Teste 3
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
+
+      # TESTE 4
+      - name: Teste 4
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
+
+      # TESTE 5
+      - name: Teste 5
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
+
+      # TESTE 6
+      - name: Teste 6
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
+
+      # TESTE 7
+      - name: Teste 7
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
+
+      # TESTE 8
+      - name: Teste 8
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
+
+      # TESTE 9
+      - name: Teste 9
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
+
+      # TESTE 10
+      - name: Teste 10
         run: |
           mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
