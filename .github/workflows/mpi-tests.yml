@@ -17,14 +17,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y openmpi-bin libopenmpi-dev
 
-      - name: Verificar MPI
-        run: |
-          mpirun --version
-
       - name: Compilar
         run: |
           mpicc atividade3.c -o atividade3
 
       - name: Executar
         run: |
-          mpirun --allow-run-as-root -np 5 ./atividade3
+          mpirun --allow-run-as-root --oversubscribe -np 5 ./atividade3
