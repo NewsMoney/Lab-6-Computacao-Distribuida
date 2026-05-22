@@ -2,36 +2,29 @@ name: Atividade 3 - MPI Scatter/Gather
 
 on:
   push:
-    branches:
-      - main
-      - master
-
   pull_request:
-    branches:
-      - main
-      - master
 
 jobs:
-  test-mpi:
+  mpi-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do repositório
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Instalar MPI
+      - name: Instalar OpenMPI
         run: |
           sudo apt-get update
-          sudo apt-get install -y mpich
+          sudo apt-get install -y openmpi-bin libopenmpi-dev
 
-      - name: Listar arquivos do repositório
+      - name: Verificar MPI
         run: |
-          find .
+          mpirun --version
 
-      - name: Compilar programa
+      - name: Compilar
         run: |
           mpicc atividade3.c -o atividade3
 
-      - name: Executar programa
+      - name: Executar
         run: |
-          mpirun -np 5 ./atividade3
+          mpirun --allow-run-as-root -np 5 ./atividade3
